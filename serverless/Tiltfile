@@ -1,7 +1,7 @@
 SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='gcr.io/cf-sandbox-trisberg/tap/serverless-source')
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
-
+allow_k8s_contexts('gke-tap-full')
 k8s_custom_deploy(
     'serverless',
     apply_cmd="tanzu apps workload apply -f config/workload.yaml --live-update" +
